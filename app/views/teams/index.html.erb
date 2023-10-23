@@ -1,0 +1,37 @@
+<h1></h1>
+
+<h3>チーム一覧</h3>
+
+<div class="kensaku">
+  <%= form_tag({controller:"teams",action:"index"}, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索する'  %>
+  <% end %>
+</div>
+  
+
+<div class="teams-container">
+  <% @teams.each do |t| %>
+    <div class="team">
+      <%= image_tag t.image_url, size: "250x200" if t.image? %><br>
+      <%= t.teamname %>
+      <%= link_to "詳細へ", team_path(t.id) %>
+      <%= link_to "編集する", edit_team_path(t.id) %>
+      <%= button_to "削除する", team_path(t.id), method: :delete %>
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+            <%= button_to team_like_path(id: t.id, team_id: t.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% else %>
+            <%= button_to team_likes_path(id: t.id, team_id: t.id), method: :post do %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% end %>
+      <% else %>
+        <i class="far fa-heart"></i><%= t.likes.count %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to "新規投稿へ", new_team_path %>
+</div>

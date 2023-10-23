@@ -1,0 +1,32 @@
+<h1></h1>
+<h3>チーム投稿</h3>
+
+<div class=new>
+ <%= form_for @team do |f| %>
+   <div class="field">
+     <%= f.label :teamname %>
+     <%= f.text_field :teamname, :size => 30 %>
+   </div>
+
+   <div class="field">
+     <%= f.label :image %>
+     <%= f.file_field :image %>
+   </div>
+
+   <div class="field">
+     <%= f.label :explanation  %>
+     <%= f.text_area :explanation, :size => "30x2" %>
+   </div>
+
+   <div class="field">
+     <%= f.label :country %>
+     <%= f.text_field :country, :size => 30 %>
+   </div>
+
+   <%= f.submit "投稿する" %>
+
+    <div class="ichiran">
+      <%= link_to "一覧に戻る", teams_path %>
+    </div>
+ <% end %>
+</div>

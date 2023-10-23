@@ -1,0 +1,19 @@
+<%= form_with(model: [@team, @player], local: true) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, :size => 30 %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :explanation  %>
+      <%= f.text_area :explanation, :size => "30x2" %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :nationality %>
+      <%= f.text_field :nationality, :size => 30 %>
+    </div>
+  <%= button_tag type: "submit" do %>
+    <i class="far fa-players"></i> 編集する
+  <% end %>
+<% end %>

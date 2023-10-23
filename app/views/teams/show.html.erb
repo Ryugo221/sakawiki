@@ -1,0 +1,73 @@
+<h1></h1>
+<h3>チーム詳細</h3>
+
+<div class="teams-container2">
+  <p><%= @team.teamname %></p>
+  <p><%= @team.country %></p>
+</div>
+
+<div class="show">
+  <div class="team1">
+    <%= image_tag @team.image_url, size: "250x200" if @team.image? %>
+  </div>
+  <div class="team2">
+    <p><%= @team.explanation %></p>
+    <p><%= @team.created_at %></p>
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(@team) %>
+          <%= button_to team_like_path(@team), method: :delete do %>
+              <i class="fas fa-heart"></i><%= @team.likes.count %>
+          <% end %>
+        <% else %>
+          <%= button_to team_likes_path(@team), method: :post do %>
+              <i class="far fa-heart"></i><%= @team.likes.count %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <i class="far fa-heart"></i><%= @team.likes.count %>
+      <% end %>
+    <%= link_to "編集する", edit_team_path(@team.id) %>
+    <%= link_to "チーム一覧に戻る", teams_path %>
+  </div>
+</div>
+<div class="show3">
+  <h2>所属選手</h2>
+</div>
+<div class="show4">
+  <% @team.liked_users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+
+  <div class="player-wrapper">
+    <% @players.each do |c| %>
+      名前:<%= c.name %><br>
+      説明:<%= c.explanation %><br>
+      国籍:<%= c.nationality %><br>
+      <%= link_to "編集する", edit_player_path(c.id) %>
+      <%= button_to "削除する", player_path(c.id), method: :delete %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= form_with(model: [@team, @player], local: true) do |f| %>
+
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name, :size => 30 %>
+          </div>
+        
+          <div class="field">
+            <%= f.label :explanation  %>
+            <%= f.text_area :explanation, :size => "30x2" %>
+          </div>
+        
+          <div class="field">
+            <%= f.label :nationality %>
+            <%= f.text_field :nationality, :size => 30 %>
+          </div>
+        <%= button_tag type: "submit" do %>
+          <i class="far fa-players"></i> プレーヤーを追加する
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

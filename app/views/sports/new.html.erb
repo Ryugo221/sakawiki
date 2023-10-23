@@ -1,0 +1,50 @@
+<%= form_for(@sport, class: 'form-horizontal', role: 'form') do |f| %>
+    <div class="container-sindan">
+        <div class="row">
+            <div class="col-12">
+                <p>Question1. オフェンスの戦術で好きなのは…</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "1", nil %>ポゼッション</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "2", nil %>カウンター</p>
+            </div>
+
+            <div class="col-12">
+                <p>Question2. ディフェンスの戦術で好きなのは…</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "1", nil %>ハイプレス</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "2", nil %>リトリート</p>
+            </div>
+
+            <div class="col-12">
+                <p>Question3. 人と接するときは…</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "1", nil %>相手の話をよく聞く方だ</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "2", nil %>自分の話をよくする方だ</p>
+            </div>
+
+            <div class="col-12">
+                <p>Question4. 大切にしたいのは…</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "1", nil %>論理性だ</p>
+            </div>
+            <div class="col-6">
+                <p><%= f.check_box :question, {multiple: true}, "2", nil %>情緒だ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sindanbotan">
+      <%= f.submit "post" %>
+    </div>
+
+ <% end %>

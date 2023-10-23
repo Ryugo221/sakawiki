@@ -1,0 +1,50 @@
+// Place all the styles related to the teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.kensaku{
+    text-align: center
+   }
+
+.teams-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+.teams-container2 {
+  margin: 0 35vw;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.show{
+  display: flex;
+  justify-content: center;
+}
+
+.show3{
+  display: flex;
+  justify-content: center;
+}
+.show4{
+  display: flex;
+  justify-content: center;
+}
+.team {
+    width: 33%;
+}
+
+.new {
+  display: flex;
+  justify-content: center;
+}
