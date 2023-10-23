@@ -6,7 +6,7 @@ class User < ApplicationRecord
   
   has_many :teams, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_teams, through: :likes, source: :team
+  has_many :liked_teams, through: :likes, source: :team, dependent: :destroy
   has_many :players, dependent: :destroy
 
   def already_liked?(team)

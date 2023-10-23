@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_11_093302) do
+ActiveRecord::Schema.define(version: 2023_10_08_051210) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "team_id", null: false
